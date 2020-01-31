@@ -2,9 +2,9 @@ import {useState} from "react";
 
 export default () => {
 
-  const [openArticleId, setOpenArticleId] = useState(null);
-  const toggleOpenArticle = (id) => () => setOpenArticleId(id);
+  const [openItemId, setOpenIyemId] = useState(null);
+  const toggleOpenItem = (id) => () => setOpenIyemId(id);
 
-  return { openArticleId, toggleOpenArticle }
+  return { openItemId, toggleOpenItem }
 
 };

@@ -3,16 +3,16 @@ import React from "react";
 export default (OriginalComponent) => class DecoratedComponent extends React.Component {
 
   state = {
-    openArticleId: null
+    openAItemId: null
   };
 
-  toggleOpenArticle = (openArticleId) => () => this.setState({openArticleId});
+  toggleOpenItem = (openItemId) => () => this.setState({openItemId});
 
 
   render() {
     return <OriginalComponent {...this.props}
-    openArticleId={this.state.openArticleId}
-    toggleOpenArticle={this.toggleOpenArticle}
+    openItemId={this.state.openItemId}
+    toggleOpenItem={this.toggleOpenItem}
     />
   }
 }
