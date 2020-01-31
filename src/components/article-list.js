@@ -1,28 +1,36 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Article from './article'
-import accordion from "../decorators/accordion";
+import useAccordion from '../custom-hooks/accordion'
 
-class ArticleList extends Component {
+export default function ArticleList({articles}) {
 
-  render() {
-    return (
-        <ul>
-          {this.getArticles()}
-        </ul>
-    );
-  }
+  const { openArticleId, toggleOpenArticle } = useAccordion();
 
-  getArticles() {
-    const { articles, toggleOpenArticle, openArticleId } = this.props;
-    return articles.map(article => (
-      <li key={article.id}>
-        <Article article={article}
-                 onBtnClick={toggleOpenArticle(article.id)}
-                 isOpen={article.id === openArticleId}
-        />
-      </li>
-    ))
-  }
+  const articleItems = articles.map(article => (
+    <li key={article.id}>
+      <Article article={article}
+               onBtnClick={toggleOpenArticle(article.id)}
+               isOpen={article.id === openArticleId}
+      />
+    </li>
+  ));
+  return <ul>{articleItems}</ul>;
 }
 
-export default accordion(ArticleList);
+
+// import accordion from "../decorators/accordion";
+
+// function ArticleList({ articles, toggleOpenArticle, openArticleId }) {
+//
+//     const articleItems = articles.map(article => (
+//       <li key={article.id}>
+//         <Article article={article}
+//                  onBtnClick={toggleOpenArticle(article.id)}
+//                  isOpen={article.id === openArticleId}
+//         />
+//       </li>
+//     ));
+//   return articleItems;
+// }
+//
+// //export default accordion(ArticleList);
